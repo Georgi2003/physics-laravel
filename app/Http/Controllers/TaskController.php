@@ -58,12 +58,45 @@ class TaskController extends Controller
         $res = 0;
 
         for($i = 0; $i < $len; $i++){
-            if($mathFormula[$i] == '*'){
-                //will use this later for other math operations
-            } elseif ($res == 0) {
-                $res = $params[$paramIndex++];
-            } else {
-                $res *= $params[$paramIndex++];
+            if(strpos($mathFormula, "*") > 0)
+            {
+                if($mathFormula[$i] == '*'){
+                    //will use this later for other math operations
+                } elseif ($res == 0) {
+                    $res = $params[$paramIndex++];
+                } else {
+                    $res *= $params[$paramIndex++];
+                }
+            }
+            else if(strpos($mathFormula, "+") > 0)
+            {
+                if($mathFormula[$i] == '+'){
+                    //will use this later for other math operations
+                } elseif ($res == 0) {
+                    $res = $params[$paramIndex++];
+                } else {
+                    $res += $params[$paramIndex++];
+                }
+            }
+            else if(strpos($mathFormula, "-") > 0)
+            {
+                if($mathFormula[$i] == '-'){
+                    //will use this later for other math operations
+                } elseif ($res == 0) {
+                    $res = $params[$paramIndex++];
+                } else {
+                    $res -= $params[$paramIndex++];
+                }
+            }
+            else if(strpos($mathFormula, "/") > 0)
+            {
+                if($mathFormula[$i] == '/'){
+                    //will use this later for other math operations
+                } elseif ($res == 0) {
+                    $res = $params[$paramIndex++];
+                } else {
+                    $res /= $params[$paramIndex++];
+                }
             }
         }
         
